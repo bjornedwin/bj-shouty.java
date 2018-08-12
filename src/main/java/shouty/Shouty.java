@@ -30,8 +30,9 @@ public class Shouty {
             String shouter = entry.getKey();
             List<String> personsShouts = entry.getValue();
             int distance = locations.get(listener).distanceFrom(locations.get(shouter));
-            if (distance < MESSAGE_RANGE)
+            if ((distance < MESSAGE_RANGE) && (!shouter.equals(listener))) {
                 shoutsHeard.put(shouter, personsShouts);
+            }
         }
 
         return shoutsHeard;
